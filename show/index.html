@@ -137,6 +137,8 @@
     var data1;
     for(var zz = 0;zz<aaa.length;zz++){
         if(aaa[zz].api_id == thisapi_id){
+            var nnn = HTMLDecode(aaa[zz].back_content);
+            aaa[zz].back_content = nnn;
             data1 = aaa[zz];
         }
     }
@@ -175,7 +177,15 @@
     Oresult.append(html2);
     Oresult.append(html3);
     Oresult.append(html4);
-
+    //HTML反转义
+    function HTMLDecode(text)
+    {
+        var temp = document.createElement("div");
+        temp.innerHTML = text;
+        var output = temp.innerText || temp.textContent;
+        temp = null;
+        return output;
+    }
 </script>
 </body>
 </html>
